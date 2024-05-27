@@ -9,13 +9,23 @@ public:
     int specialArray(vector<int>& nums) {
       
       sort(nums.begin(),nums.end());
-      int ans=-1;
 
-      for(int i=1;i<=nums.size();i++){
-        if(countNumber(nums,i)==i){
-            ans=i;
-        }
-      }
-      return ans;    
+       int start = 0;
+            int end = nums.size();
+            while(start<=end){
+
+                    int mid = start+ (end-start)/2;
+                    if(countNumber(nums, mid) == mid){
+                        return mid;
+                    }
+                    else if(countNumber(nums, mid)>mid){
+                         start = mid+1;
+                    }
+                    else{
+                        end = mid-1;
+                    }
+            }  
+        return -1;
+     
     }
 };
